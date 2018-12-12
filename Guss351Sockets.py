@@ -16,15 +16,15 @@ def on_entry_click(event):
     if entry_box.get() == 'Type your message, press Enter to send.':
         entry_box.delete(0, "end")
         entry_box.insert(0, '')
-        text_box.configure(state="normal")
+    text_box.configure(state="normal")
 
 
 def on_exit_click(event):
     """when leaving entry box, add example message, set Text box state to disabled"""
     if entry_box.get() == '':
         entry_box.insert(0, 'Type your message, press Enter to send.')
-        entry_box.config(fg = 'grey')
-        text_box.configure(state="disabled")
+        entry_box.config(fg='grey')
+    text_box.configure(state="disabled")
 
 
 def get_data():
@@ -71,6 +71,7 @@ text_box.pack()
 input_user = StringVar()
 entry_box = Entry(window, text=input_user)
 entry_box.insert(0, 'Type your message, press Enter to send.')
+entry_box.config(fg='grey')
 entry_box.bind('<FocusIn>', on_entry_click)                       # bind events
 entry_box.bind('<FocusOut>', on_exit_click)
 entry_box.bind("<Return>", enter_pressed)
